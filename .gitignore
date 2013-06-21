@@ -1,4 +1,5 @@
 *.app/
+libs/spine-c/obj/*
 
 
 # IDE-specific ignore patterns
