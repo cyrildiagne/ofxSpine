@@ -1,7 +1,7 @@
 
-../data/spineboy.png
+spineboy.png
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Linear,Linear
 repeat: none
 head
   rotate: false

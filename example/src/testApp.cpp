@@ -3,52 +3,30 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     
-    try {
-		ifstream atlasFile( ofToDataPath("spineboy.atlas").c_str() );
-		Atlas *atlas = new Atlas(atlasFile);
-        
-		SkeletonJson skeletonJson(atlas);
-        
-		ifstream skeletonFile( ofToDataPath("spineboy-skeleton.json").c_str() );
-		SkeletonData *skeletonData = skeletonJson.readSkeletonData(skeletonFile);
-        
-		ifstream animationFile( ofToDataPath("spineboy-walk.json").c_str() );
-		animation = skeletonJson.readAnimation(animationFile, skeletonData);
-        
-		skeleton = new Skeleton(skeletonData);
-		skeleton->flipX = false;
-		skeleton->flipY = false;
-		skeleton->setToBindPose();
-		skeleton->getRootBone()->x = 200;
-		skeleton->getRootBone()->y = 420;
-		skeleton->updateWorldTransform();
-        
-	} catch (exception &ex) {
-		cout << "ERROR : " << ex.what() << endl << flush;
-	}
+    skeleton.setup("spineboy.atlas", "spineboy.json");
+    skeleton.setPosition( ofPoint(ofGetWidth()*0.5, ofGetHeight()));
     
+	AnimationStateData_setMixByName(skeleton.getStateData(), "walk", "jump", 0.2f);
+	AnimationStateData_setMixByName(skeleton.getStateData(), "jump", "walk", 0.4f);
+    
+	AnimationState_setAnimationByName(skeleton.getState(), "walk", true);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     
-    animation->apply(skeleton, ofGetElapsedTimef(), true);
-    skeleton->updateWorldTransform();
+    skeleton.update( 1.0f / 60 );
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    ofEnableAlphaBlending();
-    skeleton->draw();
-    ofDisableAlphaBlending();
+    skeleton.draw();
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
-}
-//--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
-
+    
+	AnimationState_addAnimationByName(skeleton.getState(), "jump", false, 0);
+	AnimationState_addAnimationByName(skeleton.getState(), "walk", true, 0);
 }
