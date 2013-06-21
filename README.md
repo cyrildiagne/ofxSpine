@@ -1,4 +1,4 @@
-Implementation of Spline's cpp runtime in openFrameworks
+Implementation of Spline's c runtime in openFrameworks
 
 ![alt text](http://farm9.staticflickr.com/8093/8504141133_2bc406e69f_b.jpg "ofxSpineExample")
 
