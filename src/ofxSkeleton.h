@@ -26,28 +26,38 @@ public:
     void setPosition(ofPoint p);
     ofPoint getPosition();
     
-    Atlas* getAtlas() { return atlas; }
-    AnimationState* getState() { return state; }
-    AnimationStateData* getStateData() { return stateData; }
-    Skeleton* getSkeleton() { return skeleton; }
-    SkeletonData* getSkeletonData() { return skeletonData; }
+    Atlas * getAtlas(){
+        return atlas;
+    }
+    AnimationState * getState(){
+        return state;
+    }
+    AnimationStateData * getStateData(){
+        return stateData;
+    }
+    Skeleton * getSkeleton(){
+        return skeleton;
+    }
+    SkeletonData * getSkeletonData(){
+        return skeletonData;
+    }
     
 protected:
     
     void updateMeshData();
     
     ofMesh mesh;
-    ofTexture* texture;
+    ofTexture * texture;
     ofVec3f vertices[6];
     ofVec2f texCoords[6];
     ofFloatColor colors[6];
     
     // spine
-    Atlas* atlas;
-    Skeleton* skeleton;
-    SkeletonData *skeletonData;
-    AnimationState* state;
-    AnimationStateData* stateData;
+    Atlas * atlas;
+    Skeleton * skeleton;
+    SkeletonData * skeletonData;
+    AnimationState * state;
+    AnimationStateData * stateData;
 };
 
 #endif /* defined(__ofxSpineExample__ofxSkeleton__) */
