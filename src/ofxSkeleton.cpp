@@ -140,7 +140,7 @@ void ofxSkeleton::updateMeshData(){
 		// kikko : here we update the global texture object for each region, not quite optimal
 		texture = (ofTexture *)((AtlasRegion *)regionAttachment->rendererObject)->page->rendererObject;
         
-		ofPoint size = ofPoint(texture->getWidth(), texture->getWidth());
+		ofPoint size = ofPoint(texture->getWidth(), texture->getHeight());
         
 		texCoords[0].x = regionAttachment->uvs[VERTEX_X1] * size.x;
 		texCoords[0].y = regionAttachment->uvs[VERTEX_Y1] * size.y;
